@@ -10,6 +10,12 @@ COPY gradle /app/gradle
 
 COPY src /app/src
 
+# Clean previous builds
+RUN ./gradlew clean
+
+# Remove previous build artifacts
+RUN rm -rf /app/build
+
 # Build the application
 RUN ./gradlew build
 
