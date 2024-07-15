@@ -11,7 +11,7 @@ COPY gradle /app/gradle
 COPY src /app/src
 
 # Build the application
-RUN .\gradlew build
+RUN ./gradlew build
 
 
 
