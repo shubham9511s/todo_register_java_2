@@ -1,6 +1,6 @@
 
 # Stage 1: Build the application
-FROM eclipse-temurin:17-jdk-alpine as bulid
+FROM eclipse-temurin:17-jdk-alpine As build
 
 WORKDIR /app
 
