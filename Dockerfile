@@ -8,6 +8,8 @@ WORKDIR /app
 COPY gradlew gradlew.bat build.gradle settings.gradle /app/
 COPY gradle /app/gradle
 
+# Update dependencies
+RUN ./gradlew dependencies
 
 COPY src /app/src
 
