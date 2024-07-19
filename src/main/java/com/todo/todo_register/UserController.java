@@ -26,7 +26,7 @@ public class UserController {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:5000/send_email"))
+                    .uri(URI.create("http://13.233.145.199:5000/send_email"))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(emailContent))
                     .build();
