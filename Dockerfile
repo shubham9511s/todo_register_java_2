@@ -20,7 +20,7 @@ RUN ./gradlew clean
 RUN rm -rf /app/build
 
 # Build the application
-RUN ./gradlew build -x test
+RUN ./gradlew build
 
 # Stage 2: Create the final image
 FROM eclipse-temurin:17-jre-alpine
