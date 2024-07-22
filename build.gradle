@@ -27,15 +27,15 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Publishing configuration
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+
             groupId = 'com.todo'
             artifactId = 'java-app'
             version = '0.0.1-SNAPSHOT'
-            // Additional metadata
+            
             pom {
                 withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
@@ -45,6 +45,7 @@ publishing {
                                 appendNode('groupId', dep.group)
                                 appendNode('artifactId', dep.name)
                                 appendNode('version', dep.version)
+                                appendNode('scope', 'compile')
                             }
                         }
                     }
