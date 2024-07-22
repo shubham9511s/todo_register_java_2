@@ -29,7 +29,7 @@ jobs:
     - name: Build with Gradle
       run: |
        ./gradlew dependencies
-       ./gradlew clean
+       ./gradlew clean build --no-build-cache
        ./gradlew build 
 
     - name: Publish to Nexus
