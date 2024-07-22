@@ -27,7 +27,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-publishing {
+ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
@@ -64,4 +64,4 @@ publishing {
             }
         }
     }
-}
+ }
