@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: java
-        image: shubhamshinde2206/java:10039599572
+        image: shubhamshinde2206/java:10039643506
         ports:
         - containerPort: 8080
 
