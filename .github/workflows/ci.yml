@@ -32,10 +32,11 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        sonar-scanner \
+        ./gradlew sonarqube \
           -Dsonar.projectKey=java-app \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.java.binaries=.
 
   push:
     runs-on: ubuntu-latest
