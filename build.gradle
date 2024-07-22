@@ -32,10 +32,24 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            groupId = 'com.todo'                   // Changed from 'com.example' to 'com.todo'
+            groupId = 'com.todo'
             artifactId = 'java-app'
-            version = '0.0.1-SNAPSHOT'            // Match the project version
-            artifact(tasks.named('jar').get())
+            version = '0.0.1-SNAPSHOT'
+            // Additional metadata
+            pom {
+                withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    configurations.compileClasspath.incoming.resolutionResult.allDependencies.each { dep ->
+                        if (dep instanceof ModuleDependency) {
+                            dependenciesNode.appendNode('dependency').with {
+                                appendNode('groupId', dep.group)
+                                appendNode('artifactId', dep.name)
+                                appendNode('version', dep.version)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
