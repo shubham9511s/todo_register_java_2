@@ -33,7 +33,7 @@ jobs:
        ./gradlew build 
 
     - name: Publish to Nexus
-      run: ./gradlew publish --debug
+      run: ./gradlew publish --info
       env:
         nexusUsername: ${{ secrets.NEXUS_USERNAME }}
         nexusPassword: ${{ secrets.NEXUS_PASSWORD }}   
