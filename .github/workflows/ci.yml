@@ -23,7 +23,7 @@ jobs:
         java-version: '11' # Java version to set up
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --stacktrace --info
 
     - name: Install SonarQube Scanner
       run: npm install -g sonarqube-scanner
