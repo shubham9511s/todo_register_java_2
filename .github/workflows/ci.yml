@@ -34,7 +34,7 @@ jobs:
 
     - name: Publish to Nexus
       run: ./gradlew publish 
-      with:
+      env:
         nexusUsername: ${{ secrets.NEXUS_USERNAME }}
         nexusPassword: ${{ secrets.NEXUS_PASSWORD }}   
 
