@@ -27,25 +27,25 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Publishing configuration
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            groupId = 'com.example'
-            artifactId = 'java-app'
-            version = '1.0.0'
-        }
-    }
+// // Publishing configuration
+// publishing {
+//     publications {
+//         mavenJava(MavenPublication) {
+//             from components.java
+//             groupId = 'com.example'
+//             artifactId = 'java-app'
+//             version = '1.0.0'
+//         }
+//     }
 
-    repositories {
-        maven {
-            name = "nexus"
-            url = "http://13.201.82.60:8081/repository/maven-releases/"
-            credentials {
-                username = project.findProperty("nexusUsername") ?: "admin"
-                password = project.findProperty("nexusPassword") ?: "sai123"
-            }
-        }
-    }
-}
+//     repositories {
+//         maven {
+//             name = "nexus"
+//             url = "http://13.201.82.60:8081/repository/maven-releases/"
+//             credentials {
+//                 username = project.findProperty("nexusUsername") ?: "admin"
+//                 password = project.findProperty("nexusPassword") ?: "sai123"
+//             }
+//         }
+//     }
+// }
