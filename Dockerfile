@@ -43,4 +43,4 @@ EXPOSE 8080
 USER appuser
 
 # Set the command to run the application
-CMD ["java", "-jar", "/app/todo_register-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/todo_register-0.0.1-SNAPSHOT.jar"] 
