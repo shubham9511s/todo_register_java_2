@@ -32,9 +32,10 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            groupId = 'com.todo'         // Changed from 'com.example' to 'com.todo'
+            groupId = 'com.todo'                   // Changed from 'com.example' to 'com.todo'
             artifactId = 'java-app'
-            version = '0.0.1-SNAPSHOT'    // Match the project version
+            version = '0.0.1-SNAPSHOT'            // Match the project version
+            artifact(tasks.named('jar').get())
         }
     }
 
