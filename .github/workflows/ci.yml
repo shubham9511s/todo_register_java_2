@@ -26,7 +26,10 @@ jobs:
         gradle-version: '8.0'  # Adjust this version as needed
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: |
+       ./gradlew dependencies
+       ./gradlew clean
+       ./gradlew build
 
   docker-push:
     runs-on: ubuntu-latest
