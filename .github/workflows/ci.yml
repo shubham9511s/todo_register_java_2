@@ -31,6 +31,12 @@ jobs:
        ./gradlew dependencies
        ./gradlew clean
        ./gradlew build
+       
+    - name: Publish to Nexus
+      run: ./gradlew publish
+      env:
+        nexusUsername: ${{ secrets.NEXUS_USERNAME }}
+        nexusPassword: ${{ secrets.NEXUS_PASSWORD }}   
 
   docker-push:
     runs-on: ubuntu-latest
