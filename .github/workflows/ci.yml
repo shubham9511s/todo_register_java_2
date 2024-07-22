@@ -3,7 +3,7 @@ name: CI-pipeline
 on:
   push:
     branches:
-      - exp1
+      - master
     paths-ignore:
       - 'k8s/**'            # Ignore changes in the 'k8s' directory
       - 'README.md'
