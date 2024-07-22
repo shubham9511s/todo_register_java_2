@@ -27,7 +27,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
- publishing {
+publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
@@ -37,15 +37,37 @@ tasks.named('test') {
             version = '0.0.1-SNAPSHOT'
             
             pom {
+                name = 'Java App'
+                description = 'A Spring Boot application'
+                url = 'http://www.example.com'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'developerId'
+                        name = 'Developer Name'
+                        email = 'developer@example.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/com.todo/java-app.git'
+                    developerConnection = 'scm:git:ssh://github.com:com.todo/java-app.git'
+                    url = 'http://github.com/com.todo/java-app/'
+                }
+
                 withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
-                    configurations.compileClasspath.incoming.resolutionResult.allDependencies.each { dep ->
-                        if (dep instanceof ModuleDependency) {
+                    configurations.runtimeClasspath.allDependencies.each { dep ->
+                        if (dep.group && dep.name && dep.version) {
                             dependenciesNode.appendNode('dependency').with {
                                 appendNode('groupId', dep.group)
                                 appendNode('artifactId', dep.name)
                                 appendNode('version', dep.version)
-                                appendNode('scope', 'compile')
+                                appendNode('scope', 'runtime')
                             }
                         }
                     }
@@ -64,4 +86,4 @@ tasks.named('test') {
             }
         }
     }
- }
+}
