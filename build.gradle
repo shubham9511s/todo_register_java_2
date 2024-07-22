@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'maven-publish'
 }
 
 group = 'com.todo'
@@ -24,4 +25,24 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// Publishing configuration
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = "nexus"
+            url = "http://13.201.82.60:8081/repository/maven-releases/"
+            credentials {
+                username = project.findProperty("nexusUsername") ?: "admin"
+                password = project.findProperty("nexusPassword") ?: "sai123"
+            }
+        }
+    }
 }
