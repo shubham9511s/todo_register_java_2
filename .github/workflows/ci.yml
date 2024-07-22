@@ -26,12 +26,16 @@ jobs:
       with:
         gradle-version: '8.0'  # Adjust this version as needed
 
-    - name: Build and Publish
+    - name: Build with Gradle
+      run: |
+       ./gradlew dependencies
+       ./gradlew build 
+
+    - name: Publish to Nexus
       env:
-        NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-        NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-      run: ./gradlew clean build publish
-      
+        nexusUsername: ${{ secrets.NEXUS_USERNAME }}
+        nexusPassword: ${{ secrets.NEXUS_PASSWORD }}   
+      run: ./gradlew publish 
   docker-push:
     runs-on: ubuntu-latest
     needs: checkout
