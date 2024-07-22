@@ -31,9 +31,9 @@ jobs:
        ./gradlew dependencies
        ./gradlew clean
        ./gradlew build
-       
+
     - name: Publish to Nexus
-      run: ./gradlew publish
+      run: ./gradlew build --stacktrace
       env:
         nexusUsername: ${{ secrets.NEXUS_USERNAME }}
         nexusPassword: ${{ secrets.NEXUS_PASSWORD }}   
