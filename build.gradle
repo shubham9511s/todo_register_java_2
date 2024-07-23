@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
-    id 'maven-publish'
 }
 
 group = 'com.todo'
@@ -19,65 +18,10 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-configuration-processor'
-    implementation 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.projectlombok:lombok'
-    testAnnotationProcessor 'org.projectlombok:lombok'
-
-    compileOnly group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: '2.5.1', ext: 'pom'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'ms-commons'
-            from components.java
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-            pom {
-                name = 'MS Commons'
-                description = 'A concise description of my library'
-                url = 'http://www.example.com/library'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'johnd'
-                        name = 'John Doe'
-                        email = 'john.doe@example.com'
-                    }
-                }
-            }
-        }
-    }
-    repositories {
-         maven {
-            name = "maven-releases"
-            url = "http://13.126.254.153:8081/repository/maven-releases/"
-            credentials {
-                username = "admin"
-                password = "sai123"
-            }
-        }
-    }
 }
